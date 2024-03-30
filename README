@@ -1,41 +1,44 @@
-This README file contains information on the contents of the meta-david layer.
+# meta-david Layer for STM32MP1 Yocto Builds
 
-Please see the corresponding sections below for details.
+This README file contains information on the `meta-david` layer for enhancing Yocto builds for the STM32MP1 platform from byteDEVKIT STM32MP1 - At the moment its just a test and my own addons to a working linux build
 
-Dependencies
-============
+## Dependencies
 
-  URI: <first dependency>
-  branch: <branch name>
+This layer depends on the following repositories:
+ 
+ URI: `https://github.com/bytesatwork/bsp-platform-st.git`
+  - branch: `kirkstone`
 
-  URI: <second dependency>
-  branch: <branch name>
+Forked from here https://bytewiki.readthedocs.io/en/latest/index.html
 
-  .
-  .
-  .
+## Patches
 
-Patches
-=======
+Submit any patches against the `meta-david` layer through GitHub pull requests to [dgonzalez97/stm32mp1-yocto](https://github.com/dgonzalez97/stm32mp1-yocto).
 
-Please submit any patches against the meta-david layer to the xxxx mailing list (xxxx@zzzz.org)
-and cc: the maintainer:
+## Maintainer
 
-Maintainer: XXX YYYYYY <xxx.yyyyyy@zzzzz.com>
+**David Gonzalez** - [dgonzalez97](https://github.com/dgonzalez97)
 
-Table of Contents
-=================
+## Table of Contents
 
-  I. Adding the meta-david layer to your build
- II. Misc
+1. **Adding the meta-david Layer to Your Build**
+2. **Initialization Guide for STM32MP1 Yocto Project**
+3. **Contents**
 
+### 1. Adding the meta-david Layer to Your Build
 
-I. Adding the meta-david layer to your build
-=================================================
+To integrate the `meta-david` layer into your Yocto build environment:
 
-Run 'bitbake-layers add-layer meta-david'
+```shell
+cd <your-yocto-project-root>
+git clone https://github.com/dgonzalez97/stm32mp1-yocto.git sources/meta-david
+bitbake-layers add-layer sources/meta-david
+```
+### 2. Initialization Guide for STM32MP1 Yocto Project
 
-II. Misc
-========
+To_do
 
---- replace with specific information about the meta-david layer ---
+### 3. Contents
+
+- RTL8192CU Wi-Fi driver configuration
+- Addition of `usbutils` for USB device management
