@@ -31,31 +31,41 @@ After cloning `meta-david`, initialize and synchronize the Yocto repositories us
 
 ## Preparing the Build Environment
 
-Once the repositories are synchronized, prepare the Yocto Project build environment:
+With repositories synchronized, it's time to prepare the build environment:
 
-1. **Set Up the Environment**:
-    ```
-    MACHINE=bytedevkit-stm32mp1 DISTRO=poky-bytesatwork EULA=1 . setup-environment build
-    ```
+1. **Environment Setup**:
 
-2. **Add the meta-david Layer**:
-    Ensure the `meta-david` layer is included in your build environment. This step typically involves adding the layer to your `bblayers.conf` file or using `bitbake-layers add-layer`:
+    Ensure you're in the directory containing `setup-environment`. Then, to configure the build environment for `bytedevkit-stm32mp1` with the `poky-bytesatwork` distribution, execute:
+    ```
+    MACHINE=bytedevkit-stm32mp1 DISTRO=poky-bytesatwork EULA=1 source setup-environment build
+    ```
+    This command sets up the environment variables `MACHINE`, `DISTRO`, and `EULA`, then sources the `setup-environment` script. Using `source` ensures the script executes in the current shell, applying necessary configurations.
+
+2. **Incorporate meta-david Layer**:
+
+    To include `meta-david` in your build, add it to your build environment. This usually involves updating the `bblayers.conf` file or utilizing the `bitbake-layers` tool:
     ```
     bitbake-layers add-layer ../../path/to/your/workspace/meta-david
     ```
-    Adjust the path to where you cloned `meta-david`.
+    Verify the path to your cloned `meta-david` layer is correct.
 
 ## Building the Image
 
 With the environment prepared and `meta-david` included, proceed to build your Yocto Project image:
  ```
-bitbake david-image
+bitbake bytesatwork-minimal-image
  ```
-Replace `david-image` with the name of your target image recipe within the `meta-david` layer, if different.
+This will incorporate your modifications from `meta-david` into the build of `bytesatwork-minimal-image`. This modifications are in [text](../recipes-core/images/bytesatwork-minimal-image.bbappend)
+
+However, if you want to include your own image from scratch, you can modify `david-image.bb` and then run 
+
+ ```
+bitbake bytesatwork-minimal-image
+ ```
 
 ## Post-Build
 
 After the build completes, your image files will be located in
- `tmp/deploy/images/bytedevkit-stm32mp1/`. You can now proceed with flashing the image to your device.
+ `tmp/deploy/images/bytedevkit-stm32mp1/`. You can now proceed with flashing the image to your device. Depending on the image you will have to choose the one with the corresponding name you built.
 
 Refer to `sd_flashing.md` within the `guides` directory of `meta-david` for detailed instruction
