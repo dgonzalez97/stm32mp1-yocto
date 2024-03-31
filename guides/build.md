@@ -60,7 +60,7 @@ This will incorporate your modifications from `meta-david` into the build of `by
 However, if you want to include your own image from scratch, you can modify `david-image.bb` and then run 
 
  ```
-bitbake bytesatwork-minimal-image
+bitbake david-image
  ```
 
 ## Post-Build
