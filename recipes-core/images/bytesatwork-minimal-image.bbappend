@@ -6,6 +6,5 @@ IMAGE_INSTALL:append = " \
     crda \
     networkmanager \
     iproute2 \
-    tcpdump \
     net-tools \
 "
