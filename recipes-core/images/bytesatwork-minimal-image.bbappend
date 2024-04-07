@@ -8,3 +8,5 @@ IMAGE_INSTALL:append = " \
     iproute2 \
     net-tools \
 "
+
+KERNEL_MODULE_AUTOLOAD += "rtl8192cu"
