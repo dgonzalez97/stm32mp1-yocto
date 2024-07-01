@@ -1,0 +1,4 @@
+[submodule "recipes-core/libcsp"]
+	path = recipes-core/libcsp
+	url = https://github.com/dgonzalez97/libcsp.git
+	branch = libcsp-2-0
